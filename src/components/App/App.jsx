@@ -30,7 +30,7 @@ export class App extends Component{
   }
   changeVisual = () => {
     this.setState((prevState)=>({
-      visual: !prevState.visual,
+      visual: true,
     }))
   }
   handelOpenModal = ({largeImageURL, tags}) => {
@@ -38,7 +38,6 @@ export class App extends Component{
       modal: {largeImageURL, tags},
       showModal: true,
     }));
-    // setTimeout(()=>console.log(this.state), 1);
   }
   handleCloseModal = () => this.setState({ showModal: false });
   render(){
