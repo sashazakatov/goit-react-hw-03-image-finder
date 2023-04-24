@@ -45,8 +45,14 @@ export class ImageGallery extends Component{
         return(
             <ul className={css.ImageGallery}>
                 {images.map(
-                    ({id, webformatURL, tags}) => 
-                    <ImageGalleryItem key={id} webformatURL={webformatURL} tags={tags}/>)
+                    ({id, webformatURL, tags, largeImageURL}) => 
+                    <ImageGalleryItem
+                    openModal={this.props.openModal}
+                    key={id} 
+                    webformatURL={webformatURL} 
+                    tags={tags}
+                    largeImageURL={largeImageURL}
+                    />)
                 }
             </ul>
         )   
