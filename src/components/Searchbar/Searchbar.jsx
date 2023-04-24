@@ -11,8 +11,7 @@ export class Searchbar extends Component{
     }
     hendelFormSubmit = (e) => {
         e.preventDefault()
-
-        this.props.onSubmit(this.state);
+        this.props.onSubmit(this.state.value);
         this.setState({value:''})
     }
     hendelInputChange = (e) => {
@@ -30,8 +29,6 @@ export class Searchbar extends Component{
           <input
             className={css.SearchbarInput}
             type="text"
-            // autocomplete="off"
-            // autofocus
             placeholder="Search images and photos"
             name='value'
             value={this.state.value}
