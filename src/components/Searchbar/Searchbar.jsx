@@ -20,9 +20,9 @@ export class Searchbar extends Component{
     }
     render(){
         return(
-        <header className="searchbar">
-        <form className={css.Searchbar} onSubmit={this.hendelFormSubmit}>
-          <button type="submit">
+        <header className={css.Searchbar}>
+        <form className={css.Form} onSubmit={this.hendelFormSubmit}>
+          <button className={css.SearchbarButton} type="submit">
             <span>Search</span>
           </button>
       

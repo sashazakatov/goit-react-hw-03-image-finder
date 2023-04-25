@@ -8,6 +8,9 @@ export class ImageGallery extends Component{
     static propTypes = {
         value: PropTypes.string.isRequired,
         page: PropTypes.number.isRequired,
+        onChangePending: PropTypes.func.isRequired,
+        onChangeVisual: PropTypes.func.isRequired,
+        openModal: PropTypes.func.isRequired,
     }
     state = {
         images: []
@@ -28,7 +31,6 @@ export class ImageGallery extends Component{
             .then(response => this.setState((prevState)=>({images: [...(page !== 1 ? prevState.images: []), ...response.hits]})))
             .catch(error => Notify.failure(error.message))
             .finally(() => {
-                console.log(this.props.onChangePending, this.props.onChangeVisual);
                 this.props.onChangePending();
                 this.props.onChangeVisual();
             })
@@ -58,20 +60,3 @@ export class ImageGallery extends Component{
         )   
     }
 }
-
-// try {
-//     const data = await SearchImages.searchAxios();
-//     if(!data.totalHits){
-//         Notify.failure('Sorry, there are no images matching your search query. Please try again.');
-//     }else if(data.totalHits < SearchImages.page * SearchImages.per_page){
-//       Notify.failure('We\'re sorry, but you\'ve reached the end of search results.');
-//     }
-//     else{
-//       renderMarkup(getMarkup(data.hits));
-//       simplelightbox.refresh();
-//       const lastPhotoCard = document.querySelector('.photo-card:last-child');
-//       observer.observe(lastPhotoCard);
-//     }
-//   } catch(error) {
-//     console.log(error.message);
-//   }
